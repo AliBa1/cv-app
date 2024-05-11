@@ -3,9 +3,10 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  border: 2px red solid;
 }
 
-.logo {
+/* .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
@@ -39,4 +40,34 @@
 
 .read-the-docs {
   color: #888;
+} */
+
+
+.forms, .cv {
+  display: inline-block;
+  /* width: 48%; */
+  vertical-align: top;
+  /* margin-right: 2%; */
+  padding: 2em;
+  /* line-height: 1rem; */
+}
+
+/* .forms {
+
+} */
+
+.cv {
+  background-color: white;
+  text-align: left;
+  /* background-color: lightgray; */
+  color: black;
+  width: 210mm;
+  height: 297mm;
+  /* line-height: 1.2rem; */
+  /* margin: 0; */
+  /* padding: 0; */
+}
+
+.cv * {
+  margin: 0;
 }
