@@ -4,7 +4,8 @@ import { useState } from 'react'
 function Experience() {
 //   const [count, setCount] = useState(0)
   const experiences = [
-    { companyName: "Google", 
+    { id: 0,
+      companyName: "Google", 
       city: "Sacramento", 
       state:"CA", 
       startMonth:"March", 
@@ -12,8 +13,12 @@ function Experience() {
       endMonth:"April", 
       endYear: "2110",
       jobTitle: "Software Dev",
-      descriptions: ["Worked in HTML", "Developed systems"] },
-    { companyName: "Google", 
+      descriptions: [
+        { id: 0, description: "Worked in HTML"}, 
+        { id: 1, description: "Developed systems"} ] 
+      },
+    { id: 1,
+      companyName: "Google", 
       city: "Sacramento", 
       state:"CA", 
       startMonth:"March", 
@@ -21,11 +26,14 @@ function Experience() {
       endMonth:"April", 
       endYear: "2110",
       jobTitle: "Software Dev",
-      descriptions: ["Worked in HTML", "Developed systems"] }
+      descriptions: [
+        { id: 0, description: "Worked in HTML"}, 
+        { id: 1, description: "Developed systems"} ] 
+      },
   ];
 
   const experiencesList = experiences.map(experience => 
-    <>
+    <li key={experience.id}>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}>
         <p><span style={{fontWeight: 'bold'}}>{experience.companyName}</span> - {experience.city}, {experience.state}</p>
         <p>{experience.startMonth} {experience.startYear} - {experience.endMonth} {experience.endYear}</p>
@@ -34,17 +42,17 @@ function Experience() {
       <p style={{ color: 'dimgray' }}>{experience.jobTitle}</p>
 
       <ul>
-        {experience.descriptions.map((description, index) => (
-          <li key={index}>{description}</li>
-        ))}
+        {experience.descriptions.map(description => 
+          <li key={description.id}>{description.description}</li>
+        )}
       </ul>
-    </>
+    </li>
   );
 
   return (
     <>
       <h2>Experience</h2>
-      {experiencesList}
+      <ul style={{listStyleType: 'none', padding: 0, margin: 0}}>{experiencesList}</ul>
     </>
   )
 }
