@@ -63,18 +63,7 @@ function EducationForm() {
           <label>Major</label>
           <input value={major} onChange={e => setMajor(e.target.value)} required/>
 
-          <button type="submit" onClick={() => {
-            setShowForm(false);
-            console.log("School: " + schoolName);
-            console.log("City: " + city);
-            console.log("State: " + state);
-            console.log("Start Month: " + startMonth);
-            console.log("Start Year: " + startYear);
-            console.log("End Month: " + endMonth);
-            console.log("End Year: " + endYear);
-            console.log("Degree: " + degreeType);
-            console.log("Major: " + major);
-            }}>Enter</button>
+          <button type="submit" >Enter</button>
         </form>
         )}
     </div>

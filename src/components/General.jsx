@@ -1,27 +1,25 @@
-import { useState } from 'react'
+/* eslint-disable react/prop-types */
+// import { useState } from 'react'
 import Icon from '@mdi/react';
 import { mdiPhone } from '@mdi/js';
 import { mdiEmail } from '@mdi/js';
-
-{/* <Icon path={mdiPhone} size={1} /> */}
 // import './General.css'
 
-function General() {
-//   const [count, setCount] = useState(0)
+function IconInfo(props) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center' }}>
+      <Icon path={props.icon} size={1} />
+      <p style={{ marginLeft: '0.5rem'}}>{props.info}</p>
+    </div>
+  )
+}
 
+function General(props) {
   return (
     <>
-      <h1 style={{paddingBlock: '1rem'}}>Full Name</h1>
-
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <Icon path={mdiPhone} size={1} />
-        <p style={{ marginLeft: '0.5rem'}}>123123123</p>
-      </div>
-
-      <div style={{ display: 'flex', alignItems: 'center'  }}>
-        <Icon path={mdiEmail} size={1} />
-        <p style={{ marginLeft: '0.5rem'}}>email@email.com</p>
-      </div>
+      <h1 style={{paddingBlock: '1rem'}}>{props.data.firstName} {props.data.lastName}</h1>
+      <IconInfo icon={mdiPhone} info={props.data.phone} />
+      <IconInfo icon={mdiEmail} info={props.data.email} />
     </>
   )
 }

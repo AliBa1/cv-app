@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react'
 // import './GeneralForm.css'
 
-function GeneralForm() {
+function GeneralForm({updateInfo}) {
   const [showForm, setShowForm] = useState(false);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -9,9 +10,10 @@ function GeneralForm() {
   const [email, setEmail] = useState('');
 
   function updateGeneral() {
-    console.log("Full Name: " + firstName + lastName);
+    console.log("Full Name: " + firstName + ' ' + lastName);
     console.log("Phone: " + phone);
     console.log("Email: " + email);
+    updateInfo(firstName, lastName, phone, email);
   }
   
   return (
@@ -23,23 +25,25 @@ function GeneralForm() {
           updateGeneral(),
           setShowForm(false)
         }}>
-          <label>First Name</label>
-          <input value={firstName} onChange={e => setFirstName(e.target.value)} required/>
-          
-          <label>Last Name</label>
-          <input value={lastName} onChange={e => setLastName(e.target.value)} required/>
+          <FormInput labelTitle="First Name" isRequired={true} value={firstName} setValue={setFirstName}/>
+          <FormInput labelTitle="Last Name" isRequired={true} value={lastName} setValue={setLastName}/>
+          <FormInput labelTitle="Phone" isRequired={true} value={phone} setValue={setPhone}/>
+          <FormInput labelTitle="Email" isRequired={true} value={email} setValue={setEmail}/>
 
-          <label>Phone</label>
-          <input value={phone} onChange={e => setPhone(e.target.value)} type="number" required/>
-          
-          <label>Email</label>
-          <input value={email} onChange={e => setEmail(e.target.value)} type="email" required/>
-
-          <button type="submit" onClick={() => {setShowForm(false)}}>Enter</button>
+          <button type="submit">Enter</button>
         </form>
       )}
     </div>
   );
+}
+
+function FormInput(props) {
+  return (
+    <>
+      <label>{props.labelTitle}</label>
+      <input value={props.value} onChange={e => props.setValue(e.target.value)} required={props.isRequired}/>
+    </>
+  )
 }
 
 export default GeneralForm
