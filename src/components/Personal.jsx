@@ -3,7 +3,7 @@
 import Icon from '@mdi/react';
 import { mdiPhone } from '@mdi/js';
 import { mdiEmail } from '@mdi/js';
-// import './General.css'
+// import './Personal.css'
 
 function IconInfo(props) {
   return (
@@ -14,7 +14,7 @@ function IconInfo(props) {
   )
 }
 
-function General(props) {
+function Personal(props) {
   return (
     <>
       <h1 style={{paddingBlock: '1rem'}}>{props.data.firstName} {props.data.lastName}</h1>
@@ -24,4 +24,4 @@ function General(props) {
   )
 }
 
-export default General
+export default Personal

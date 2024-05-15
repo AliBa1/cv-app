@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import General from './components/General.jsx'
-import GeneralForm from './components/GeneralForm.jsx'
+import Personal from './components/Personal.jsx'
+import PersonalForm from './components/PersonalForm.jsx'
 import Education from './components/Education.jsx'
 import EducationForm from './components/EducationForm.jsx'
 import Experience from './components/Experience.jsx'
@@ -8,14 +8,14 @@ import ExperienceForm from './components/ExperienceForm.jsx'
 import './App.css'
 
 function App(){
-  const [generalInfo, setGeneralInfo] = useState({
+  const [personalInfo, setPersonalInfo] = useState({
     firstName: "Full",
     lastName: "Name",
     phone: "(123) 456-7890",
     email: "email@email.com",
   })
-  const updateGeneral = (firstName, lastName, phone, email) => {
-    setGeneralInfo({
+  const updatePersonal = (firstName, lastName, phone, email) => {
+    setPersonalInfo({
       firstName: firstName,
       lastName: lastName,
       phone: phone,
@@ -59,13 +59,13 @@ function App(){
   return (
     <>
       <div className="forms">
-        <GeneralForm updateInfo={updateGeneral}/>
+        <PersonalForm updateInfo={updatePersonal}/>
         <EducationForm updateInfo={updateEducation}/>
         <ExperienceForm updateInfo={updateExperience}/>
       </div>
 
       <div className="cv">
-        <General data={generalInfo}/>
+        <Personal data={personalInfo}/>
         <Education data={educationInfo}/>
         <Experience data={experienceInfo}/>
       </div>

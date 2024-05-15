@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react'
 import { FormInput } from '../tools/FormInput';
-// import './GeneralForm.css'
+// import './PersonalForm.css'
 
-function GeneralForm({updateInfo}) {
+function PersonalForm({updateInfo}) {
   const [showForm, setShowForm] = useState(false);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
 
-  function updateGeneral() {
+  function updatePersonal() {
     console.log("Full Name: " + firstName + ' ' + lastName);
     console.log("Phone: " + phone);
     console.log("Email: " + email);
@@ -19,11 +19,11 @@ function GeneralForm({updateInfo}) {
   
   return (
     <div style={{marginBottom: '2rem', backgroundColor: '#1a1a1a', padding: '1rem'}}>
-      <button style={{width: '100%'}} onClick={() => {setShowForm(!showForm)}}>General Information</button>
+      <button style={{width: '100%'}} onClick={() => {setShowForm(!showForm)}}>Personal Information</button>
       {showForm && (
         <form onSubmit={(e) => {
           e.preventDefault(),
-          updateGeneral(),
+          updatePersonal(),
           setShowForm(false)
         }}>
           <FormInput labelTitle="First Name" value={firstName} setValue={setFirstName} isRequired={true}/>
@@ -31,11 +31,11 @@ function GeneralForm({updateInfo}) {
           <FormInput labelTitle="Phone" value={phone} setValue={setPhone} isRequired={true}/>
           <FormInput labelTitle="Email" value={email} setValue={setEmail} isRequired={true}/>
 
-          <button type="submit">Enter</button>
+          <button type="submit">Update</button>
         </form>
       )}
     </div>
   );
 }
 
-export default GeneralForm
+export default PersonalForm
