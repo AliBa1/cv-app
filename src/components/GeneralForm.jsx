@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react'
+import { FormInput } from '../tools/FormInput';
 // import './GeneralForm.css'
 
 function GeneralForm({updateInfo}) {
@@ -25,25 +26,16 @@ function GeneralForm({updateInfo}) {
           updateGeneral(),
           setShowForm(false)
         }}>
-          <FormInput labelTitle="First Name" isRequired={true} value={firstName} setValue={setFirstName}/>
-          <FormInput labelTitle="Last Name" isRequired={true} value={lastName} setValue={setLastName}/>
-          <FormInput labelTitle="Phone" isRequired={true} value={phone} setValue={setPhone}/>
-          <FormInput labelTitle="Email" isRequired={true} value={email} setValue={setEmail}/>
+          <FormInput labelTitle="First Name" value={firstName} setValue={setFirstName} isRequired={true}/>
+          <FormInput labelTitle="Last Name" value={lastName} setValue={setLastName} isRequired={true}/>
+          <FormInput labelTitle="Phone" value={phone} setValue={setPhone} isRequired={true}/>
+          <FormInput labelTitle="Email" value={email} setValue={setEmail} isRequired={true}/>
 
           <button type="submit">Enter</button>
         </form>
       )}
     </div>
   );
-}
-
-function FormInput(props) {
-  return (
-    <>
-      <label>{props.labelTitle}</label>
-      <input value={props.value} onChange={e => props.setValue(e.target.value)} required={props.isRequired}/>
-    </>
-  )
 }
 
 export default GeneralForm

@@ -7,28 +7,20 @@
 }
 
 .forms, .cv {
-  /* display: inline-block; */
-  /* width: 50%; */
-  /* vertical-align: top; */
   padding: 2em;
 }
 
 .forms {
   display: flex;
   flex-direction: column;
-  /* border: 1px blue solid; */
 }
 
 .cv {
   background-color: white;
   text-align: left;
-  /* background-color: lightgray; */
   color: black;
   width: 210mm;
   height: 297mm;
-  /* line-height: 1.2rem; */
-  /* margin: 0; */
-  /* padding: 0; */
 }
 
 .cv * {
@@ -38,16 +30,15 @@
 form {
   display: flex;
   flex-direction: column;
-  /* margin-bottom: 2rem; */
-  /* border: 1px red solid; */
-}
-
-form button {
-  /* width: 10em;
-  align-self: center; */
 }
 
 input, select {
+  margin-bottom: 1rem;
+}
+
+textarea {
+  resize: vertical;
+  height: 10rem;
   margin-bottom: 1rem;
 }
 

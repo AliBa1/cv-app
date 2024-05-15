@@ -1,23 +1,9 @@
-import { useState } from 'react'
+/* eslint-disable react/prop-types */
+// import { useState } from 'react'
 // import './Education.css'
 
-function Education() {
-  // const [count, setCount] = useState(0)
-  const education = [
-    { id: 0, 
-      schoolName: "University of Genius", 
-      city: "Sacramento", 
-      state:"CA", 
-      startMonth:"March", 
-      startYear: "2099", 
-      endMonth:"April", 
-      endYear: "2110",
-      degreeType: "Bachelors",
-      major: "Comptuer Science",
-      gpa: 3.1 }
-  ];
-
-  const educationList = education.map(session => 
+function Education(props) {
+  const educationList = props.data.map(session => 
     <li key={session.id}>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}>
         <p><span style={{fontWeight: 'bold'}}>{session.schoolName}</span> - {session.city}, {session.state}</p>
@@ -28,7 +14,6 @@ function Education() {
       {session.gpa && (
         <p style={{ color: 'dimgray' }}>GPA: {session.gpa}</p>
       )}
-      
     </li>
   );
 

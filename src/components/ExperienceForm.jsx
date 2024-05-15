@@ -1,29 +1,41 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react'
+import { FormInput, FormTextArea } from '../tools/FormInput';
+import DateToData from '../tools/DateToData';
 // import './ExperienceForm.css'
 
-function ExperienceForm() {
+function ExperienceForm({updateInfo}) {
   const [showForm, setShowForm] = useState(false);
   const [companyName, setCompanyName] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [startDate, setStartDate] = useState('');
-  const startMonth = startDate.length > 0 ? startDate.slice(5, 7): "";
-  const startYear = startDate.length > 0 ? startDate.slice(0, 4) : "";
+  const startMonth = DateToData(startDate).month;
+  const startYear = DateToData(startDate).year;
   const [endDate, setEndDate] = useState('');
-  const endMonth = endDate.length > 0 ? endDate.slice(5, 7): "";
-  const endYear = endDate.length > 0 ? endDate.slice(0, 4) : "";
+  const endMonth = DateToData(endDate).month;
+  const endYear = DateToData(endDate).year;
   const [jobTitle, setJobTitle] = useState('');
-  const [descriptions, setDescriptions] = useState([]);
+  const [description, setDescription] = useState('');
 
   function updateExperiences() {
     console.log("Company: " + companyName);
     console.log("City: " + city);
-    console.log("State: " + state);
+    console.log("State: " + state.toUpperCase());
     console.log("Start Month: " + startMonth);
     console.log("Start Year: " + startYear);
     console.log("End Month: " + endMonth);
     console.log("End Year: " + endYear);
     console.log("Job Title: " + jobTitle);
+    console.log("Description: " + description);
+    updateInfo(companyName, city, state.toUpperCase(), startMonth, startYear, endMonth, endYear, jobTitle, description);
+    setCompanyName('');
+    setCity('');
+    setState('');
+    setStartDate('');
+    setEndDate('');
+    setJobTitle('');
+    setDescription('');
   }
 
   return (
@@ -36,30 +48,14 @@ function ExperienceForm() {
           updateExperiences(),
           setShowForm(false)
         }}>
-          <label>Company Name</label>
-          <input value={companyName} onChange={e => setCompanyName(e.target.value)} required/>
+          <FormInput labelTitle="Company Name" value={companyName} setValue={setCompanyName} isRequired={true}/>
+          <FormInput labelTitle="City" value={city} setValue={setCity} maxLength={undefined} isRequired={true}/>
+          <FormInput labelTitle="State" value={state.toUpperCase()} setValue={setState} maxLength={2} isRequired={true}/>
+          <FormInput labelTitle="Start Date" type="date" value={startDate} setValue={setStartDate} isRequired={true}/>
+          <FormInput labelTitle="End Date (not required)" type="date" value={endDate} setValue={setEndDate} isRequired={false}/>
+          <FormInput labelTitle="Job Title" value={jobTitle} setValue={setJobTitle} isRequired={true}/>
+          <FormTextArea labelTitle="Description" value={description} setValue={setDescription} isRequired={true}/>
           
-          <label>City</label>
-          <input value={city} onChange={e => setCity(e.target.value)} required/>
-
-          <label>State</label>
-          <input value={state} onChange={e => setState(e.target.value)} maxLength={2}  required/>
-          
-          <label>Start Date</label>
-          <input type="date" value={startDate} onChange={e => setStartDate(e.target.value)}/>
-
-          <label>End Date</label>
-          <input type="date" value={endDate} onChange={e => setEndDate(e.target.value)}/>
-
-          <label>Job Title</label>
-          <input value={jobTitle} onChange={e => setJobTitle(e.target.value)} required/>
-
-          {/* <label>Description</label>
-          <input value={descriptions} onChange={e => setDescriptions(e.target.value)} required/> */}
-
-          {/* <button type="submit" onClick={() => {
-            setShowForm(false);
-          }}>Enter</button> */}
           <button type="submit">Enter</button>
         </form>
       )}
