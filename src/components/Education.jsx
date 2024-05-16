@@ -2,9 +2,9 @@
 // import { useState } from 'react'
 // import './Education.css'
 
-function Education(props) {
-  const educationList = props.data.map(session => 
-    <li key={session.id}>
+function Education({data}) {
+  const educationList = data.map(session => 
+    <li key={session.id} className="info-section">
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}>
         <p><span style={{fontWeight: 'bold'}}>{session.schoolName}</span> - {session.city}, {session.state}</p>
         <p>{session.startMonth} {session.startYear} - {session.endMonth} {session.endYear}</p>

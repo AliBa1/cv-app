@@ -23,21 +23,119 @@ function App(){
     });
   };
 
-  const [educationInfo, setEducationInfo] = useState([]);
-  const updateEducation = (schoolName, city, state, startMonth, startYear, endMonth, endYear, degreeType, major, gpa) => {
+  // const [educationInfo, setEducationInfo] = useState([]);
+  const [educationInfo, setEducationInfo] = useState([
+    {
+      id: 0,
+      index: 0,
+      schoolName: "University of Washington", 
+      city: "Seattle", 
+      state: "WA", 
+      startDate: "2020-08-16",
+      startMonth: "August", 
+      startYear: "2020", 
+      endDate: "2024-05-16",
+      endMonth: "May", 
+      endYear: "2024",
+      degreeType: "Bachelors",
+      major: "Biochemistry",
+      gpa: 4.1
+    }
+  ]);
+  const updateEducation = (schoolName, city, state, startDate, startMonth, startYear, endDate, endMonth, endYear, degreeType, major, gpa) => {
     setEducationInfo([...educationInfo, {
       id: educationInfo.length, 
+      index: educationInfo.length, 
       schoolName: schoolName, 
       city: city, 
       state: state, 
+      startDate: startDate,
       startMonth: startMonth, 
       startYear: startYear, 
+      endDate: endDate,
       endMonth: endMonth, 
       endYear: endYear,
       degreeType: degreeType,
       major: major,
       gpa: gpa
     }]);
+  };
+  // const [educationEditID, setEducationEditID] = useState(null);
+  const editEducation = (index, schoolName, city, state, startDate, startMonth, startYear, endDate, endMonth, endYear, degreeType, major, gpa) => {
+    // setEducationInfo([educationInfo[index], {
+    //   id: educationInfo.length, 
+    //   schoolName: schoolName, 
+    //   city: city, 
+    //   state: state, 
+    //   startMonth: startMonth, 
+    //   startYear: startYear, 
+    //   endMonth: endMonth, 
+    //   endYear: endYear,
+    //   degreeType: degreeType,
+    //   major: major,
+    //   gpa: gpa
+    // }]);
+
+
+
+    // setEducationInfo(educationInfo[index] = {
+    //   id: educationInfo[index].id,
+    //   index: index,
+    //   schoolName: schoolName, 
+    //   city: city, 
+    //   state: state, 
+    //   startDate: startDate, 
+    //   startMonth: startMonth, 
+    //   startYear: startYear, 
+    //   endDate: endDate, 
+    //   endMonth: endMonth, 
+    //   endYear: endYear,
+    //   degreeType: degreeType,
+    //   major: major,
+    //   gpa: gpa
+    // });
+
+    // setEducationInfo(educationInfo.map(session => {
+    //   if (session.index == index) {
+    //     session.id = educationInfo[index].id;
+    //     session.index = index;
+    //     session.schoolName = schoolName;
+    //     session.city = city; 
+    //     session.state = state;
+    //     session.startDate = startDate; 
+    //     session.startMonth = startMonth;
+    //     session.startYear = startYear;
+    //     session.endDate = endDate;
+    //     session.endMonth = endMonth;
+    //     session.endYear = endYear;
+    //     session.degreeType = degreeType;
+    //     session.major = major;
+    //     session.gpa = gpa;
+    //   }
+    // }));
+
+    setEducationInfo(educationInfo.map(session => {
+      if (session.index === index) {
+        return {
+          ...session,
+          schoolName: schoolName,
+          city: city,
+          state: state,
+          startDate: startDate,
+          startMonth: startMonth,
+          startYear: startYear,
+          endDate: endDate,
+          endMonth: endMonth,
+          endYear: endYear,
+          degreeType: degreeType,
+          major: major,
+          gpa: gpa
+        };
+      }
+      return session;
+    }));
+
+    console.log(educationInfo);
   };
 
   const [experienceInfo, setExperienceInfo] = useState([]);
@@ -60,7 +158,7 @@ function App(){
     <>
       <div className="forms">
         <PersonalForm updateInfo={updatePersonal}/>
-        <EducationForm updateInfo={updateEducation}/>
+        <EducationForm updateInfo={updateEducation} editInfo={editEducation} data={educationInfo}/>
         <ExperienceForm updateInfo={updateExperience}/>
       </div>
 

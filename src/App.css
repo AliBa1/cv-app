@@ -42,3 +42,17 @@ textarea {
   margin-bottom: 1rem;
 }
 
+/* .edit-button {
+  display: none;
+  margin-top: 0.25em;
+  padding: 0.2em 0.8em;
+  font-size: 1em;
+}
+
+.info-section:hover {
+  border: 1px gray dashed;
+}
+
+.info-section:hover .edit-button {
+  display: block;
+} */

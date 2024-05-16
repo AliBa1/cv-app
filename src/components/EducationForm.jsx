@@ -4,8 +4,10 @@ import { FormInput } from '../tools/FormInput';
 import DateToData from '../tools/DateToData';
 // import './EducationForm.css'
 
-function EducationForm({updateInfo}) {
+function EducationForm({updateInfo, editInfo, data}) {
   const [showForm, setShowForm] = useState(false);
+  const [editing, setEditing] = useState(false);
+  const [editIndex, setEditIndex] = useState(null);
   const [schoolName, setSchoolName] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
@@ -19,17 +21,7 @@ function EducationForm({updateInfo}) {
   const [major, setMajor] = useState('');
   const [gpa, setGPA] = useState('');
 
-  function updateEducation() {
-    console.log("School: " + schoolName);
-    console.log("City: " + city);
-    console.log("State: " + state.toUpperCase());
-    console.log("Start Month: " + startMonth);
-    console.log("Start Year: " + startYear);
-    console.log("End Month: " + endMonth);
-    console.log("End Year: " + endYear);
-    console.log("Degree: " + degreeType);
-    console.log("Major: " + major);
-    updateInfo(schoolName, city, state.toUpperCase(), startMonth, startYear, endMonth, endYear, degreeType, major, gpa);
+  function emptyForm() {
     setSchoolName('');
     setCity('');
     setState('');
@@ -40,16 +32,52 @@ function EducationForm({updateInfo}) {
     setGPA('');
   }
 
+  function updateEducation() {
+    console.log("School: " + schoolName);
+    console.log("City: " + city);
+    console.log("State: " + state.toUpperCase());
+    console.log("Start Date: " + startDate);
+    console.log("Start Month: " + startMonth);
+    console.log("Start Year: " + startYear);
+    console.log("End Month: " + endMonth);
+    console.log("End Year: " + endYear);
+    console.log("Degree: " + degreeType);
+    console.log("Major: " + major);
+    updateInfo(schoolName, city, state.toUpperCase(), startDate, startMonth, startYear, endDate, endMonth, endYear, degreeType, major, gpa);
+    emptyForm();
+  }
+
+  function setToEdit(session) {
+    setShowForm(true);
+    setEditing(true);
+    setEditIndex(session.index);
+    setSchoolName(session.schoolName);
+    setCity(session.city);
+    setState(session.state);
+    setStartDate(session.startDate);
+    setEndDate(session.endDate);
+    setDegreeType(session.degreeType);
+    setMajor(session.major);
+    setGPA(session.gpa);
+  }
+
+  function editEducation() {
+    editInfo(editIndex, schoolName, city, state.toUpperCase(), startDate, startMonth, startYear, endDate, endMonth, endYear, degreeType, major, gpa);
+    setEditing(false);
+  }
+
+  const educationEntries = data.map(session => 
+    <li key={session.id} style={{all: 'unset'}}>
+      <button style={{width: '100%', padding: '1rem'}} onClick={() => {setToEdit(session)}}>{session.schoolName}, {session.startMonth} {session.startYear}</button>
+    </li>
+  );
+
   return (
     <div style={{marginBottom: '2rem', backgroundColor: '#1a1a1a', padding: '1rem'}}>
-      <button style={{width: '100%'}} onClick={() => {setShowForm(!showForm)}}>Education</button>
+      <button style={{width: '100%'}} onClick={() => {setShowForm(!showForm); setEditing(false); emptyForm();}}>Add Education</button>
 
       {showForm && (
-        <form onSubmit={(e) => {
-          e.preventDefault(),
-          updateEducation(),
-          setShowForm(false)
-        }}>
+        <form onSubmit={(e) => { e.preventDefault(), (editing ? editEducation() : updateEducation()), setShowForm(false) }}>
           <FormInput labelTitle="School Name" value={schoolName} setValue={setSchoolName} isRequired={true}/>
           <FormInput labelTitle="City" value={city} setValue={setCity} isRequired={true}/>
           <FormInput labelTitle="State" value={state.toUpperCase()} setValue={setState} maxLength={2} isRequired={true}/>
@@ -67,9 +95,14 @@ function EducationForm({updateInfo}) {
           <FormInput labelTitle="Major" value={major} setValue={setMajor} isRequired={true}/>
           <FormInput labelTitle="GPA (not required)" value={gpa} type="number" setValue={setGPA} isRequired={false}/>
 
-          <button type="submit" >Enter</button>
+          {/* <button type="submit">Enter</button> */}
+          <button type="submit">{editing ? "Update":"Enter"}</button>
         </form>
         )}
+
+      <ul style={{all: "unset"}}>
+        {educationEntries}
+      </ul>
     </div>
   );
 }
