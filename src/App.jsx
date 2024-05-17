@@ -11,6 +11,8 @@ import Projects from './components/Projects.jsx'
 import ProjectsForm from './components/forms/ProjectsForm.jsx'
 import Skills from './components/Skills.jsx'
 import SkillsForm from './components/forms/SkillsForm.jsx'
+import ScreenshotPDF from './components/tools/ScreenshotPDF.jsx'
+import ScreenshotDocx from './components/tools/ScreenshotDocx.jsx'
 
 function App(){
   const [personalData, setPersonalData] = useState({
@@ -221,9 +223,11 @@ function App(){
         <ExperienceForm updateData={updateExperience} editData={editExperience} data={experienceData}/>
         <ProjectsForm updateData={updateProjects} editData={editProject} data={projectsData}/>
         <SkillsForm updateData={updateSkills} data={skillsData}/>
+        <ScreenshotPDF id={"resumeFile"}/>
+        <ScreenshotDocx id={"resumeFile"}/>
       </div>
 
-      <div className="cv">
+      <div className="cv" id='resumeFile'>
         <Personal data={personalData}/>
         <Education data={educationData}/>
         <Experience data={experienceData}/>

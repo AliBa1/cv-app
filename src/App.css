@@ -10,17 +10,19 @@
   padding: 2em;
 }
 
-.forms {
-  display: flex;
-  flex-direction: column;
-}
+/* .forms {
+  /* display: flex; */
+  /* flex-direction: column; */
+/* } */
 
 .cv {
   background-color: white;
   text-align: left;
   color: black;
-  width: 210mm;
-  height: 297mm;
+  /* width: 210mm;
+  height: 297mm; */
+  width: 816px;
+  height: 1056px;
 }
 
 .cv * {
