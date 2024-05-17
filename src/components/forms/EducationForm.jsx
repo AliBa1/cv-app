@@ -8,6 +8,7 @@ function EducationForm({updateData, editData, data}) {
   const [showForm, setShowForm] = useState(false);
   const [editing, setEditing] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
+  const newIndex = data.length;
   const [schoolName, setSchoolName] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
@@ -46,7 +47,7 @@ function EducationForm({updateData, editData, data}) {
     // console.log("Degree: " + degreeType);
     // console.log("Major: " + major);
     // console.log("Minors: " + minors);
-    updateData(schoolName, city, state.toUpperCase(), startDate, startMonth, startYear, endDate, endMonth, endYear, degreeType, major, minors, gpa);
+    updateData(newIndex, schoolName, city, state.toUpperCase(), startDate, startMonth, startYear, endDate, endMonth, endYear, degreeType, major, minors, gpa);
     emptyForm();
   }
 

@@ -1,15 +1,16 @@
 import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid';
 import Personal from './components/Personal.jsx'
-import PersonalForm from './components/PersonalForm.jsx'
+import PersonalForm from './components/forms/PersonalForm.jsx'
 import Education from './components/Education.jsx'
-import EducationForm from './components/EducationForm.jsx'
+import EducationForm from './components/forms/EducationForm.jsx'
 import Experience from './components/Experience.jsx'
-import ExperienceForm from './components/ExperienceForm.jsx'
+import ExperienceForm from './components/forms/ExperienceForm.jsx'
 import './App.css'
 import Projects from './components/Projects.jsx'
-import ProjectsForm from './components/ProjectsForm.jsx'
+import ProjectsForm from './components/forms/ProjectsForm.jsx'
 import Skills from './components/Skills.jsx'
-import SkillsForm from './components/SkillsForm.jsx'
+import SkillsForm from './components/forms/SkillsForm.jsx'
 
 function App(){
   const [personalData, setPersonalData] = useState({
@@ -31,7 +32,7 @@ function App(){
 
   const [educationData, setEducationData] = useState([
     {
-      id: 0,
+      id: uuidv4(),
       index: 0,
       schoolName: "University of Washington", 
       city: "Seattle", 
@@ -49,10 +50,10 @@ function App(){
     }
   ]);
 
-  const updateEducation = (schoolName, city, state, startDate, startMonth, startYear, endDate, endMonth, endYear, degreeType, major, minors, gpa) => {
+  const updateEducation = (index, schoolName, city, state, startDate, startMonth, startYear, endDate, endMonth, endYear, degreeType, major, minors, gpa) => {
     setEducationData([...educationData, {
-      id: educationData.length, 
-      index: educationData.length, 
+      id: uuidv4(), 
+      index: index, 
       schoolName: schoolName, 
       city: city, 
       state: state, 
@@ -95,7 +96,7 @@ function App(){
 
 
   const [experienceData, setExperienceData] = useState([{
-    id: 0,
+    id: uuidv4(),
     index: 0,
     companyName: "Microsoft", 
     city: "Seattle", 
@@ -110,10 +111,10 @@ function App(){
     description: "Took a detailed look at the biodiversity in the area then use data anaysis (python) to explore the data and write papers.",
   }]);
 
-  const updateExperience = (companyName, city, state, startDate, startMonth, startYear, endDate, endMonth, endYear, jobTitle, description) => {
+  const updateExperience = (index, companyName, city, state, startDate, startMonth, startYear, endDate, endMonth, endYear, jobTitle, description) => {
     setExperienceData([...experienceData, {
-      id: experienceData.length,
-      index: experienceData.length,
+      id: uuidv4(),
+      index: index,
       companyName: companyName, 
       city: city, 
       state: state, 
@@ -152,7 +153,7 @@ function App(){
 
 
   const [projectsData, setProjectsData] = useState([{
-    id: 0,
+    id: uuidv4(),
     index: 0,
     projectName: "Snake Data Analysis", 
     startDate: "2024-05-16",
@@ -167,10 +168,10 @@ function App(){
     skills: "Python, Lab",
   }]);
 
-  const updateProjects = (projectName, startDate, startMonth, startYear, endDate, endMonth, endYear, linkName, link, description, skills) => {
+  const updateProjects = (index, projectName, startDate, startMonth, startYear, endDate, endMonth, endYear, linkName, link, description, skills) => {
     setProjectsData([...projectsData, {
-      id: experienceData.length,
-      index: experienceData.length,
+      id: uuidv4(),
+      index: index,
       projectName: projectName, 
       startDate: startDate,
       startMonth: startMonth, 

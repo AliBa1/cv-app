@@ -21,11 +21,7 @@ function PersonalForm({updateData}) {
     <div style={{marginBottom: '2rem', backgroundColor: '#1a1a1a', padding: '1rem'}}>
       <button style={{width: '100%'}} onClick={() => {setShowForm(!showForm)}}>Personal Information</button>
       {showForm && (
-        <form onSubmit={(e) => {
-          e.preventDefault(),
-          updatePersonal(),
-          setShowForm(false)
-        }}>
+        <form onSubmit={(e) => { e.preventDefault(), updatePersonal(), setShowForm(false)}}>
           <FormInput labelTitle="First Name" value={firstName} setValue={setFirstName} isRequired={true}/>
           <FormInput labelTitle="Last Name" value={lastName} setValue={setLastName} isRequired={true}/>
           <FormInput labelTitle="Phone" value={phone} setValue={setPhone} isRequired={true}/>

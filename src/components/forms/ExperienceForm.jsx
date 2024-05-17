@@ -8,6 +8,7 @@ function ExperienceForm({updateData, editData, data}) {
   const [showForm, setShowForm] = useState(false);
   const [editing, setEditing] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
+  const newIndex = data.length;
   const [companyName, setCompanyName] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
@@ -40,7 +41,7 @@ function ExperienceForm({updateData, editData, data}) {
     // console.log("End Year: " + endYear);
     // console.log("Job Title: " + jobTitle);
     // console.log("Description: " + description);
-    updateData(companyName, city, state.toUpperCase(), startDate, startMonth, startYear, endDate, endMonth, endYear, jobTitle, description);
+    updateData(newIndex, companyName, city, state.toUpperCase(), startDate, startMonth, startYear, endDate, endMonth, endYear, jobTitle, description);
     emptyForm();
   }
 

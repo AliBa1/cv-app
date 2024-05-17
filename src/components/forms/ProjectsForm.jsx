@@ -8,6 +8,7 @@ function ProjectsForm({updateData, editData, data}) {
   const [showForm, setShowForm] = useState(false);
   const [editing, setEditing] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
+  const newIndex = data.length;
   const [projectName, setProjectName] = useState('');
   const [startDate, setStartDate] = useState('');
   const startMonth = DateToData(startDate).month;
@@ -31,7 +32,7 @@ function ProjectsForm({updateData, editData, data}) {
   }
 
   function updateProjects() {
-    updateData(projectName, startDate, startMonth, startYear, endDate, endMonth, endYear, linkName, link, description, skills);
+    updateData(newIndex, projectName, startDate, startMonth, startYear, endDate, endMonth, endYear, linkName, link, description, skills);
     emptyForm();
   }
 
