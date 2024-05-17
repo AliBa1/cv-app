@@ -2,8 +2,8 @@
 // import { useState } from 'react'
 // import './Experience.css'
 
-function Experience(props) {
-  const experiencesList = props.data.map(experience => 
+function Experience({data}) {
+  const experiencesList = data.map(experience => 
     <li key={experience.id}>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1rem' }}>
         <p><span style={{fontWeight: 'bold'}}>{experience.companyName}</span> - {experience.city}, {experience.state}</p>

@@ -4,7 +4,7 @@ import { FormInput } from '../tools/FormInput';
 import DateToData from '../tools/DateToData';
 // import './EducationForm.css'
 
-function EducationForm({updateInfo, editInfo, data}) {
+function EducationForm({updateData, editData, data}) {
   const [showForm, setShowForm] = useState(false);
   const [editing, setEditing] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
@@ -19,6 +19,7 @@ function EducationForm({updateInfo, editInfo, data}) {
   const endYear = DateToData(endDate).year;
   const [degreeType, setDegreeType] = useState('');
   const [major, setMajor] = useState('');
+  const [minors, setMinors] = useState('');
   const [gpa, setGPA] = useState('');
 
   function emptyForm() {
@@ -29,21 +30,23 @@ function EducationForm({updateInfo, editInfo, data}) {
     setEndDate('');
     setDegreeType('');
     setMajor('');
+    setMinors('');
     setGPA('');
   }
 
   function updateEducation() {
-    console.log("School: " + schoolName);
-    console.log("City: " + city);
-    console.log("State: " + state.toUpperCase());
-    console.log("Start Date: " + startDate);
-    console.log("Start Month: " + startMonth);
-    console.log("Start Year: " + startYear);
-    console.log("End Month: " + endMonth);
-    console.log("End Year: " + endYear);
-    console.log("Degree: " + degreeType);
-    console.log("Major: " + major);
-    updateInfo(schoolName, city, state.toUpperCase(), startDate, startMonth, startYear, endDate, endMonth, endYear, degreeType, major, gpa);
+    // console.log("School: " + schoolName);
+    // console.log("City: " + city);
+    // console.log("State: " + state.toUpperCase());
+    // console.log("Start Date: " + startDate);
+    // console.log("Start Month: " + startMonth);
+    // console.log("Start Year: " + startYear);
+    // console.log("End Month: " + endMonth);
+    // console.log("End Year: " + endYear);
+    // console.log("Degree: " + degreeType);
+    // console.log("Major: " + major);
+    // console.log("Minors: " + minors);
+    updateData(schoolName, city, state.toUpperCase(), startDate, startMonth, startYear, endDate, endMonth, endYear, degreeType, major, minors, gpa);
     emptyForm();
   }
 
@@ -58,11 +61,12 @@ function EducationForm({updateInfo, editInfo, data}) {
     setEndDate(session.endDate);
     setDegreeType(session.degreeType);
     setMajor(session.major);
+    setMinors(session.minors);
     setGPA(session.gpa);
   }
 
   function editEducation() {
-    editInfo(editIndex, schoolName, city, state.toUpperCase(), startDate, startMonth, startYear, endDate, endMonth, endYear, degreeType, major, gpa);
+    editData(editIndex, schoolName, city, state.toUpperCase(), startDate, startMonth, startYear, endDate, endMonth, endYear, degreeType, major, minors, gpa);
     setEditing(false);
   }
 
@@ -93,6 +97,7 @@ function EducationForm({updateInfo, editInfo, data}) {
           </select>
 
           <FormInput labelTitle="Major" value={major} setValue={setMajor} isRequired={true}/>
+          <FormInput labelTitle="Minors" value={minors} setValue={setMinors} isRequired={true}/>
           <FormInput labelTitle="GPA (not required)" value={gpa} type="number" setValue={setGPA} isRequired={false}/>
 
           {/* <button type="submit">Enter</button> */}

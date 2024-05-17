@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { FormInput } from '../tools/FormInput';
 // import './PersonalForm.css'
 
-function PersonalForm({updateInfo}) {
+function PersonalForm({updateData}) {
   const [showForm, setShowForm] = useState(false);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -14,7 +14,7 @@ function PersonalForm({updateInfo}) {
     console.log("Full Name: " + firstName + ' ' + lastName);
     console.log("Phone: " + phone);
     console.log("Email: " + email);
-    updateInfo(firstName, lastName, phone, email);
+    updateData(firstName, lastName, phone, email);
   }
   
   return (

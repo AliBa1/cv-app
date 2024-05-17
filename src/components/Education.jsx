@@ -10,7 +10,8 @@ function Education({data}) {
         <p>{session.startMonth} {session.startYear} - {session.endMonth} {session.endYear}</p>
       </div>
 
-      <p style={{ color: 'dimgray' }}>{session.degreeType} in {session.major}</p>
+      {/* <p style={{ color: 'dimgray' }}>{session.degreeType} in {session.major}</p> */}
+      <p style={{  }}>{session.degreeType} Degree in {session.major}, {session.minors && (<span>Minors: {session.minors}</span>)}</p>
       {session.gpa && (
         <p style={{ color: 'dimgray' }}>GPA: {session.gpa}</p>
       )}

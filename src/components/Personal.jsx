@@ -5,21 +5,21 @@ import { mdiPhone } from '@mdi/js';
 import { mdiEmail } from '@mdi/js';
 // import './Personal.css'
 
-function IconInfo(props) {
+function IconInfo({icon, info}) {
   return (
     <div style={{ display: 'flex', alignItems: 'center' }}>
-      <Icon path={props.icon} size={1} />
-      <p style={{ marginLeft: '0.5rem'}}>{props.info}</p>
+      <Icon path={icon} size={1} />
+      <p style={{ marginLeft: '0.5rem'}}>{info}</p>
     </div>
   )
 }
 
-function Personal(props) {
+function Personal({data}) {
   return (
     <>
-      <h1 style={{paddingBlock: '1rem'}}>{props.data.firstName} {props.data.lastName}</h1>
-      <IconInfo icon={mdiPhone} info={props.data.phone} />
-      <IconInfo icon={mdiEmail} info={props.data.email} />
+      <h1 style={{paddingBlock: '1rem'}}>{data.firstName} {data.lastName}</h1>
+      <IconInfo icon={mdiPhone} info={data.phone} />
+      <IconInfo icon={mdiEmail} info={data.email} />
     </>
   )
 }
